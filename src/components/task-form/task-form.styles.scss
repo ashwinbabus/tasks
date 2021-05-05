@@ -1,0 +1,69 @@
+//e9e9e9
+//EDF7FC
+
+.task-form__container {
+  width: 100%;
+  height: auto;
+  background-color: #edf7fc;
+  padding: 20px;
+  border: 1px solid #e9e9e9;
+  border-top: none;
+  h4 {
+    margin-bottom: 3px;
+    font-weight: 400;
+  }
+  input,
+  select {
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid #EBEBEB;
+  }
+}
+
+.task {
+  &__when {
+    display: flex;
+    justify-content: space-between;
+    .date,
+    .time {
+      width: 48%;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+      height: 15px;
+      width: 15px;
+      cursor: pointer;
+    }
+
+    .save {
+      display: flex;
+      align-items: center;
+    }
+
+    .button {
+      padding: 8px 25px;
+      border: none;
+      border-radius: 5px;
+      background-color: transparent;
+      margin-left: 20px;
+      cursor: pointer;
+    }
+    .btn_green {
+      background-color: #47bb7f;
+      color: white;
+    }
+  }
+}
+
+.mg {
+  margin-bottom: 25px;
+}

@@ -43,7 +43,6 @@ export function* updateTaskStartSaga(){
 
 export function* addTaskAsync({payload}){
     const {token} = payload;
-    console.log("add task token : ",token);
     try {
         yield call(addTask,payload);
         yield put(fetchTasksStart(token))

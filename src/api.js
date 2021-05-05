@@ -107,7 +107,6 @@ export const getUser = async (token) => {
 // DELETE TASK
 
 export const deleteTask = async ({token, id}) => {
-  console.log("delete api ", token, id );
   await axios({
     method: "DELETE",
     url:

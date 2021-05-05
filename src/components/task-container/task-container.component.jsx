@@ -9,7 +9,6 @@ import { connect } from "react-redux";
 
 const Tasks = ({ tasks }) => {
 
-  console.log("Task container : ", tasks);
 
   const changeFormView = () => {
     setShowForm(!showForm);

@@ -7,7 +7,6 @@ import "./main-page.styles.scss";
 const MainPage = ({fetchToken}) => {
     
   useEffect(() => {
-    console.log("app mounted");
     fetchToken();
   }, [fetchToken]);
 

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addTaskStart, deleteTask, updateTaskStart } from "../../redux/actions";
-import { selectUserId, selectUserName } from "../../redux/selectors/user.selectors";
+import {
+  selectUserId,
+  selectUserName,
+} from "../../redux/selectors/user.selectors";
 import "./task-form.styles.scss";
 
 function TaskForm(props) {
@@ -18,7 +21,7 @@ function TaskForm(props) {
     setshowEdit,
     user_id,
     changeFormView,
-    user_name
+    user_name,
   } = props;
 
   const [description, setDescription] = useState(desc ? desc : "");
@@ -44,9 +47,9 @@ function TaskForm(props) {
     setTime(sec);
   };
 
-  const changeTime = (time) => {
-    let hours = Math.floor(time / 3600);
-    let secs = time % 3600;
+  const changeTime = (seconds) => {
+    let hours = Math.floor(seconds / 3600);
+    let secs = seconds % 3600;
     let mins = Math.floor(secs / 60);
     return mins < 10 ? `${hours}:0${mins}` : `${hours}:${mins}`;
   };
@@ -55,13 +58,13 @@ function TaskForm(props) {
     <div className="task-form__container">
       <div className="task__description mg">
         <h4>Task Description</h4>
-        <input
-          type="text"
-          name="description"
-          id=""
-          onChange={(e) => setDescription(e.target.value)}
-          value={description}
-        />
+          <input
+            type="text"
+            name="description"
+            id="description"
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+          />
       </div>
 
       <div className="task__when mg">
@@ -109,7 +112,7 @@ function TaskForm(props) {
           <button
             type="button"
             className="button"
-            onClick={() => isEditing? setshowEdit() : changeFormView()}
+            onClick={() => (isEditing ? setshowEdit() : changeFormView())}
           >
             Cancel
           </button>
@@ -124,7 +127,6 @@ function TaskForm(props) {
                 saveTask();
                 changeFormView();
               }
-              
             }}
           >
             Save
@@ -138,7 +140,7 @@ function TaskForm(props) {
 const mapStateToProps = (state) => ({
   token: state.token,
   user_id: selectUserId(state),
-  user_name: selectUserName(state)
+  user_name: selectUserName(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

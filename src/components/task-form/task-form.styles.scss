@@ -21,6 +21,25 @@
     outline: none;
     border: 1px solid #EBEBEB;
   }
+
+  input[type="text"]{
+    background-image: url(../../todoGrey.png);
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position-x: 98%;
+    background-position-y: center;
+    padding: 5px;
+  }
+
+  input[type="text"]:focus{
+    background-image: url(../../todoBlack.png);
+  }
+
+
+
+  #description{
+    cursor: auto;
+  }
 }
 
 .task {
@@ -67,3 +86,5 @@
 .mg {
   margin-bottom: 25px;
 }
+
+

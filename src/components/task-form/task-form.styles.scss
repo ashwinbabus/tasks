@@ -17,27 +17,24 @@
     width: 100%;
     height: 30px;
     padding: 5px;
-    cursor: pointer;
+    cursor: auto;
     outline: none;
-    border: 1px solid #EBEBEB;
+    border: 1px solid #ebebeb;
   }
 
-  input[type="text"]{
+  .description_input {
     background-image: url(../../todoGrey.png);
     background-repeat: no-repeat;
     background-size: 16px;
     background-position-x: 98%;
     background-position-y: center;
-    padding: 5px;
   }
 
-  input[type="text"]:focus{
+  .description_input:focus {
     background-image: url(../../todoBlack.png);
   }
 
-
-
-  #description{
+  #description {
     cursor: auto;
   }
 }
@@ -76,6 +73,10 @@
       margin-left: 20px;
       cursor: pointer;
     }
+    .button:hover {
+      text-decoration: underline;
+    }
+
     .btn_green {
       background-color: #47bb7f;
       color: white;
@@ -87,4 +88,85 @@
   margin-bottom: 25px;
 }
 
+.time_input {
+  // position: relative;
+  background-image: url("../../clock.png");
+  background-repeat: no-repeat;
+  background-size: 14px;
+  background-position-x: 5%;
+  background-position-y: center;
+  padding-left: 30px !important;
+}
 
+.timepicker {
+  position: absolute;
+  overflow: auto;
+  height: 232px;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
+  .time_list:hover {
+    color: white;
+    background-color: #1980ec;
+  }
+
+  .active_time {
+    color: white;
+    background-color: #1980ec;
+  }
+}
+
+.task__user {
+  .user__search {
+    background-image: url("../../sort.png");
+    background-repeat: no-repeat;
+    background-size: 14px;
+    background-position-x: 98%;
+    background-position-y: center;
+  }
+
+  .user__search:focus {
+    background-image: url("../../search.png");
+  }
+
+  .user_list {
+    height: 38px;
+    width: 100%;
+    background-color: white;
+    margin-top: 10px;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    ul {
+      list-style: none;
+      width: 100%;
+      height: 65%;
+      padding: 2px 0 2px 0;
+    }
+    li {
+      width: 100%;
+      height: 100%;
+      padding-left: 43px;
+    }
+    li:hover {
+      background-color: #f2f2f2;
+      cursor: pointer;
+    }
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .user_list::after {
+    content: "";
+    position: absolute;
+    left: 5%;
+    top: -6px;
+    height: 10px;
+    width: 10px;
+    transform: rotate(45deg);
+    background-color: white;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}

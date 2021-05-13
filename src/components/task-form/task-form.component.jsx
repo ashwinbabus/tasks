@@ -130,13 +130,11 @@ function TaskForm(props) {
       : `${hours}:${mins}${meridien}`;
   };
 
-
   function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
           setShowTimeDrop(false);
-          // alert("You clicked outside of me!");
         }
       }
       document.addEventListener("mousedown", handleClickOutside);
@@ -146,28 +144,11 @@ function TaskForm(props) {
     }, [ref]);
   }
 
-  function TimeDrop(props) {
+  function DropWrapper(props) {
     const wrapperRef = useRef(null);
     useOutsideAlerter(wrapperRef);
 
-    return (
-      <div className="timepicker" ref={wrapperRef}>
-        <ul style={{ cursor: "pointer" }}>
-          {hours.map((hour) => (
-            <li
-              style={{ padding: "3px 15px 3px 5px" }}
-              key={hour}
-              className={
-                activeTime === hour ? "active_time time_list" : "time_list"
-              }
-              onClick={(e) => handleSelectTime(e)}
-            >
-              {hour}
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
+    return <div ref={wrapperRef}> {props.children} </div>;
   }
 
   return (
@@ -204,7 +185,28 @@ function TaskForm(props) {
             placeholder="Time"
             value={changeTime(time)}
           />
-          {showTimeDrop && <TimeDrop />}
+          {showTimeDrop && (
+            <DropWrapper>
+              <div className="timepicker">
+                <ul style={{ cursor: "pointer" }}>
+                  {hours.map((hour) => (
+                    <li
+                      style={{ padding: "3px 15px 3px 5px" }}
+                      key={hour}
+                      className={
+                        activeTime === hour
+                          ? "active_time time_list"
+                          : "time_list"
+                      }
+                      onClick={(e) => handleSelectTime(e)}
+                    >
+                      {hour}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </DropWrapper>
+          )}
         </div>
       </div>
 

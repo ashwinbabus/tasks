@@ -89,7 +89,6 @@
 }
 
 .time_input {
-  // position: relative;
   background-image: url("../../clock.png");
   background-repeat: no-repeat;
   background-size: 14px;
@@ -102,6 +101,7 @@
   position: absolute;
   overflow: auto;
   height: 232px;
+  width: 95px;
   background-color: white;
   border: 1px solid #ddd;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);

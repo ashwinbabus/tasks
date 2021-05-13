@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { addTaskStart, deleteTask, updateTaskStart } from "../../redux/actions";
 import {
@@ -130,6 +130,46 @@ function TaskForm(props) {
       : `${hours}:${mins}${meridien}`;
   };
 
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setShowTimeDrop(false);
+          // alert("You clicked outside of me!");
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  function TimeDrop(props) {
+    const wrapperRef = useRef(null);
+    useOutsideAlerter(wrapperRef);
+
+    return (
+      <div className="timepicker" ref={wrapperRef}>
+        <ul style={{ cursor: "pointer" }}>
+          {hours.map((hour) => (
+            <li
+              style={{ padding: "3px 15px 3px 5px" }}
+              key={hour}
+              className={
+                activeTime === hour ? "active_time time_list" : "time_list"
+              }
+              onClick={(e) => handleSelectTime(e)}
+            >
+              {hour}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
   return (
     <div className="task-form__container">
       <div className="task__description mg">
@@ -164,26 +204,7 @@ function TaskForm(props) {
             placeholder="Time"
             value={changeTime(time)}
           />
-          {showTimeDrop && (
-            <div className="timepicker">
-              <ul style={{ cursor: "pointer" }}>
-                {hours.map((hour) => (
-                  <li
-                    style={{ padding: "3px 15px 3px 5px" }}
-                    key={hour}
-                    className={
-                      activeTime === hour
-                        ? "active_time time_list"
-                        : "time_list"
-                    }
-                    onClick={(e) => handleSelectTime(e)}
-                  >
-                    {hour}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          {showTimeDrop && <TimeDrop />}
         </div>
       </div>
 
